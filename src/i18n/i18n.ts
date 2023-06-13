@@ -19,7 +19,6 @@ i18n
     resources: {
       en: {
         translation: {
-          assistant_name: 'Vincent',
           chat_placeholder: 'Ask something about the znueni!',
           submit: 'Chat',
           welcome: 'Welcome to the chat.znueni.app! Happy to help you out.',

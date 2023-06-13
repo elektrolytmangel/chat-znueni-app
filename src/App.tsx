@@ -61,7 +61,7 @@ const App = () => {
         {chat.map((r, i) => {
           return (
             <p key={i} className='text-bg-light p-2 rounded shadow-sm'>
-              <strong>{t(r.role === 'you' ? 'you' : r.role.displayName)}: </strong>
+              <strong>{r.role === 'you' ? t('you') : r.role.displayName}: </strong>
               {r.content}
             </p>
           )
