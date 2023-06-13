@@ -40,6 +40,5 @@ export default async (messages: ChatCompletionRequestMessage[], role: string) =>
   catch (err: any) {
     console.log(err);
     return [...context, { role: ChatCompletionRequestMessageRoleEnum.Assistant, content: err.message }]
-
   }
 };
