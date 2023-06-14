@@ -2,8 +2,10 @@ import { ChatCompletionRequestMessage, ChatCompletionRequestMessageRoleEnum } fr
 import { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { FaLock } from 'react-icons/fa';
 import './App.css';
 import requestAi from './api/openaiapi';
+import ApiKeyInput from './components/api-key-input/ApiKeyInput';
 import './i18n/i18n';
 import { AiRole, ChatHistory, roles } from './model/app';
 
@@ -17,6 +19,7 @@ const App = () => {
   const [role, setRole] = useState<AiRole>(roles[0]);
   const [chat, setChat] = useState<ChatHistory[]>([]);
   const [prompt, setPrompt] = useState('');
+  const [showModal, setShowModal] = useState(false);
 
   const handleRoleChange = (i: number) => {
     const r = roles.find(x => x.index === i);
@@ -47,7 +50,7 @@ const App = () => {
 
   return (
     <div className="container-fluid align-items-end vh-100 d-grid" >
-      <div className="position-absolute top-0 end-0 p-2">
+      <div className="position-absolute top-0 end-0 p-2 d-flex gap-2">
         <select className="form-select form-select-sm" onChange={e => handleRoleChange(parseInt(e.target.value))}>
           {roles.map(r => {
             return (
@@ -55,6 +58,7 @@ const App = () => {
             );
           })}
         </select>
+        <Button variant='light' onClick={() => setShowModal(true)}><FaLock /></Button>
       </div>
       <h1 className='text-center'>{t('welcome')}</h1>
       <div className='overflow-y-auto flex-grow-1 h-100'>
@@ -83,6 +87,7 @@ const App = () => {
           {t('submit')}
         </Button>
       </div>
+      <ApiKeyInput show={showModal} setShow={v => setShowModal(v)} />
     </div >
   );
 }

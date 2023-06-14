@@ -19,7 +19,9 @@ i18n
     resources: {
       en: {
         translation: {
+          cancel: 'Cancel',
           chat_placeholder: 'Ask something about the znueni!',
+          ok: 'Ok',
           submit: 'Chat',
           welcome: 'Welcome to the chat.znueni.app! Happy to help you out.',
           you: 'You',

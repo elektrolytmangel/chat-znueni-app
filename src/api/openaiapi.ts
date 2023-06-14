@@ -1,5 +1,7 @@
 import { ChatCompletionRequestMessage, ChatCompletionRequestMessageRoleEnum, Configuration, OpenAIApi } from "openai";
 
+const REACT_APP_OPENAI_API_KEY = 'REACT_APP_OPENAI_API_KEY';
+
 const getSystemContent = (role: string) => {
   return `You answer questions always as you are ${role} from the movie Pulp Fiction. You are restricted to answer only with context to siwss food or the movie puplp fuction, nothing else. At the end of every response you add a quote from Pulp Fuction which matches the question.`;
 }
@@ -19,9 +21,17 @@ const addSystemContextIfNeeded = (context: ChatCompletionRequestMessage[], role:
   return context;
 }
 
+export const setApiKey = (apiKey: string) => {
+  localStorage.setItem(REACT_APP_OPENAI_API_KEY, apiKey);
+}
+
+export const getApiKey = () => {
+  return localStorage.getItem(REACT_APP_OPENAI_API_KEY);
+}
+
 export default async (messages: ChatCompletionRequestMessage[], role: string) => {
   const configuration = new Configuration({
-    apiKey: process.env.REACT_APP_OPENAI_API_KEY || '',
+    apiKey: process.env.REACT_APP_OPENAI_API_KEY || getApiKey() || '',
   });
 
   const openai = new OpenAIApi(configuration);
