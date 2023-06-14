@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { FaLock } from 'react-icons/fa';
 import './App.css';
-import requestAi from './api/openaiapi';
+import { openaiapi as requestAi } from './api/openaiapi';
 import ApiKeyInput from './components/api-key-input/ApiKeyInput';
 import './i18n/i18n';
 import { AiRole, ChatHistory, roles } from './model/app';

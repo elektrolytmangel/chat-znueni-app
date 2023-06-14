@@ -29,7 +29,7 @@ export const getApiKey = () => {
   return localStorage.getItem(REACT_APP_OPENAI_API_KEY);
 }
 
-export default async (messages: ChatCompletionRequestMessage[], role: string) => {
+export const openaiapi = async (messages: ChatCompletionRequestMessage[], role: string) => {
   const configuration = new Configuration({
     apiKey: process.env.REACT_APP_OPENAI_API_KEY || getApiKey() || '',
   });
