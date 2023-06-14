@@ -1,6 +1,12 @@
 # chat.znueni.app
 This repos contains the code to build and run a small chat app answering questions to swiss food and pulp fiction.
 
+## Try it out!
+1. Go to [chat.znueni.app](https://chat.znueni.app)
+2. Click the 'lock'-button on the upper right
+3. Add your own OpenAI API key and press ok (will be stored in the localstorage of the browser)
+4. Start chatting!
+
 # Getting started!
 ## Prerequisites
 * Node.js

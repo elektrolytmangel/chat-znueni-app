@@ -19,7 +19,6 @@ const App = () => {
   const [role, setRole] = useState<AiRole>(roles[0]);
   const [chat, setChat] = useState<ChatHistory[]>([]);
   const [prompt, setPrompt] = useState('');
-  const [showModal, setShowModal] = useState(false);
 
   const handleRoleChange = (i: number) => {
     const r = roles.find(x => x.index === i);
@@ -58,7 +57,7 @@ const App = () => {
             );
           })}
         </select>
-        <Button variant='light' onClick={() => setShowModal(true)}><FaLock /></Button>
+        <ApiKeyInput />
       </div>
       <h1 className='text-center'>{t('welcome')}</h1>
       <div className='overflow-y-auto flex-grow-1 h-100'>
@@ -87,7 +86,6 @@ const App = () => {
           {t('submit')}
         </Button>
       </div>
-      <ApiKeyInput show={showModal} setShow={v => setShowModal(v)} />
     </div >
   );
 }
