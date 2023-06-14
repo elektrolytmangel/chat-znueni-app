@@ -20,8 +20,9 @@ i18n
       en: {
         translation: {
           cancel: 'Cancel',
-          chat_placeholder: 'Ask something about the znueni!',
           ok: 'Ok',
+          placeholder_api_key: 'Paste your OpenAI API Key here',
+          placeholder_chat: 'Ask something about the znueni!',
           submit: 'Chat',
           welcome: 'Welcome to the chat.znueni.app! Happy to help you out.',
           you: 'You',

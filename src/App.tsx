@@ -73,10 +73,10 @@ const App = () => {
       </div>
       <div className='row gap-2 p-2'>
         <input
-          className='col-10'
+          className='col-sm-12 col-lg-10 '
           value={prompt}
           onChange={e => setPrompt(e.target.value)}
-          placeholder={t('chat_placeholder')!}
+          placeholder={t('placeholder_chat')!}
           onKeyUp={e => handleKeyEvent(e.key, prompt, role)}
         />
         <Button
