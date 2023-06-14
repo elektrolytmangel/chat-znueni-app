@@ -71,6 +71,7 @@ const App = () => {
       </div>
       <div className='row gap-2 p-2'>
         <input
+          disabled={isLoading}
           className='col-sm-12 col-lg-10 '
           value={prompt}
           onChange={e => setPrompt(e.target.value)}
