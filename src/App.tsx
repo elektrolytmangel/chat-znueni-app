@@ -2,7 +2,6 @@ import { ChatCompletionRequestMessage, ChatCompletionRequestMessageRoleEnum } fr
 import { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { FaLock } from 'react-icons/fa';
 import './App.css';
 import { openaiapi as requestAi } from './api/openaiapi';
 import ApiKeyInput from './components/api-key-input/ApiKeyInput';
