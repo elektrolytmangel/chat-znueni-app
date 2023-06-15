@@ -24,7 +24,7 @@ const App = () => {
         <ApiKeyInput />
       </div>
       <h1 className='text-center'>{t('welcome')}</h1>
-      <div className='overflow-y-auto overflow-x-hidden d-flex flex-column-reverse'>
+      <div className='overflow-y-auto overflow-x-hidden h-100 d-flex flex-column-reverse'>
         <ChatMessages chatHistory={chat} />
       </div>
       <div className='row gap-2 p-2'>

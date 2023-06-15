@@ -2,3 +2,9 @@
   padding-bottom: 0;
   padding-bottom: env(safe-area-inset-bottom, 0);
 }
+
+input:focus {
+  outline: none;
+  transition: .1s;
+  box-shadow: 0 0 1pt 1pt grey;
+}

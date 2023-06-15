@@ -61,7 +61,7 @@ const ChatInput = ({ role, appendToChat }: Props) => {
         autoFocus={true}
         ref={inputRef}
         disabled={isLoading}
-        className='col-sm-12 col-lg-10 '
+        className='col-sm-12 col-lg-10'
         value={prompt}
         onChange={e => setPrompt(e.target.value)}
         placeholder={t('placeholder_chat')!}
