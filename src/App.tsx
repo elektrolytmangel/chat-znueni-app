@@ -18,13 +18,13 @@ const App = () => {
   }
 
   return (
-    <div className="container-fluid align-items-end vh-100 d-grid" >
+    <div id="app" className="container-fluid align-items-end vh-100 d-grid" >
       <div className="position-absolute top-0 end-0 p-2 d-flex gap-2">
         <RoleSelector setRole={setRole} />
         <ApiKeyInput />
       </div>
       <h1 className='text-center'>{t('welcome')}</h1>
-      <div className='overflow-y-auto flex-grow-1 h-100 overflow-x-hidden d-flex flex-column-reverse'>
+      <div className='overflow-y-auto overflow-x-hidden d-flex flex-column-reverse'>
         <ChatMessages chatHistory={chat} />
       </div>
       <div className='row gap-2 p-2'>
