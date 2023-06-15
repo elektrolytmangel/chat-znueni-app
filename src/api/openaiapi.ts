@@ -3,7 +3,7 @@ import { ChatCompletionRequestMessage, ChatCompletionRequestMessageRoleEnum, Con
 const REACT_APP_OPENAI_API_KEY = 'REACT_APP_OPENAI_API_KEY';
 
 const getSystemContent = (role: string) => {
-  return `You answer questions always as you are ${role} from the movie Pulp Fiction. You are restricted to answer only with context to siwss food or the movie puplp fuction, nothing else. At the end of every response you add a quote from Pulp Fuction which matches the question.`;
+  return `You answer questions always as you are ${role} from the movie Pulp Fiction. You are restricted to answer only with context to siwss food or the movie pulp fiction, nothing else. At the end of every response you add a quote from Pulp Fuction which matches the question.`;
 }
 
 const addSystemContextIfNeeded = (context: ChatCompletionRequestMessage[], role: string) => {
