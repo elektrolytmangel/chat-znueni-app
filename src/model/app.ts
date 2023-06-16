@@ -15,6 +15,5 @@ const roles: AiRole[] = [
   { fullName: 'Zed', displayName: 'Zed', index: 2 },
 ]
 
-
 export type { AiRole, ChatHistory };
 export { roles };
