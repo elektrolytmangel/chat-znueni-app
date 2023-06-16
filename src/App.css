@@ -3,7 +3,6 @@
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
-  padding-bottom: env(safe-area-inset-bottom, 0);
 }
 
 .input-style {
@@ -26,4 +25,14 @@ input {
 
 input:focus {
   outline: none;
+}
+
+@media only screen and (max-width: 50rem) {
+  .safe-area {
+    height: 100vh;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    padding-bottom: 16px;
+  }
 }
