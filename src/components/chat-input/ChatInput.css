@@ -2,7 +2,3 @@
   border: none;
   background-color: transparent;
 }
-
-.safe-area-bottom-padding {
-  padding-bottom: calc(env(safe-area-inset-bottom, 0));
-}
