@@ -18,7 +18,7 @@ const App = () => {
   }
 
   return (
-    <div id="app" className="container-fluid align-items-end vh-100 d-grid" >
+    <div className="container-fluid align-items-end vh-100 d-grid" >
       <div className="position-absolute top-0 end-0 p-2 d-flex gap-2">
         <RoleSelector setRole={setRole} />
         <ApiKeyInput />
@@ -27,7 +27,7 @@ const App = () => {
       <div className='overflow-y-auto overflow-x-hidden h-100 d-flex flex-column-reverse'>
         <ChatMessages chatHistory={chat} />
       </div>
-      <div className='row gap-2 p-2'>
+      <div className='row gap-2 p-2 safe-area-bottom'>
         <ChatInput role={role} appendToChat={appendToChat} />
       </div>
     </div >
