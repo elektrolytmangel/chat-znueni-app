@@ -1,8 +1,9 @@
 .safe-area {
-  height: 100vh;
+  height: calc(100vh - (env(safe-area-inset-bottom) + env(safe-area-inset-top)));
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .input-style {
@@ -25,14 +26,4 @@ input {
 
 input:focus {
   outline: none;
-}
-
-@media only screen and (max-width: 768px) {
-  .safe-area {
-    height: 100vh;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-    padding-bottom: 16px;
-  }
 }
