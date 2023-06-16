@@ -1,8 +1,9 @@
 .safe-area {
-  height: calc(100vh - env(safe-area-inset-bottom, 0));
+  height: 100vh;
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
+  padding-bottom: env(safe-area-inset-bottom, 0);
 }
 
 .input-style {
