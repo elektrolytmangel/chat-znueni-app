@@ -25,7 +25,7 @@ const ApiKeyInput = () => {
       <Modal show={show}>
         <Modal.Body >
           <div className='d-grid p-2 gap-2'>
-            <input className='row' placeholder={t('placeholder_api_key') || ''} onChange={e => setKey(e.target.value)} value={key} />
+            <input className='row input-style' placeholder={t('placeholder_api_key') || ''} onChange={e => setKey(e.target.value)} value={key} />
             <div className='row gap-2'>
               <Button
                 className='col'

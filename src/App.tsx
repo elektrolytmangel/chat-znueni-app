@@ -4,10 +4,10 @@ import './App.css';
 import ApiKeyInput from './components/api-key-input/ApiKeyInput';
 import ChatInput from './components/chat-input/ChatInput';
 import ChatMessages from './components/chat-messages/ChatMessages';
+import GithubLink from './components/github-button/GithubLink';
 import RoleSelector from './components/role-selector/RoleSelector';
 import './i18n/i18n';
 import { AiRole, ChatHistory, roles } from './model/app';
-import GithubLink from './components/github-button/GithubLink';
 
 const App = () => {
   const { t } = useTranslation();
@@ -19,19 +19,17 @@ const App = () => {
   }
 
   return (
-    <div className="container-fluid align-items-end d-grid safe-area overflow-hidden" >
+    <div className="safe-area container-fluid" >
       <div className="p-2 d-flex gap-2 position-absolute top-0 end-0">
         <RoleSelector setRole={setRole} />
         <ApiKeyInput />
         <GithubLink />
       </div>
-      <h1 hidden={chat.length > 0} className='text-center'>{t('welcome')}</h1>
-      <div className='overflow-y-auto overflow-x-hidden h-100 d-flex flex-column-reverse border'>
+      <h1 hidden={chat.length > 0} className='text-center '>{t('welcome')}</h1>
+      <div className='overflow-y-auto overflow-x-hidden d-flex flex-column-reverse'>
         <ChatMessages chatHistory={chat} />
       </div>
-      <div className='row gap-2 p-2'>
-        <ChatInput role={role} appendToChat={appendToChat} />
-      </div>
+      <ChatInput role={role} appendToChat={appendToChat} />
     </div >
   );
 }

@@ -1,9 +1,10 @@
 import { ChatCompletionRequestMessage, ChatCompletionRequestMessageRoleEnum } from "openai";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Button } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
+import { IoSendSharp } from 'react-icons/io5';
 import { openaiapi as requestAi } from '../../api/openaiapi';
 import { AiRole, ChatHistory } from "../../model/app";
+import './ChatInput.css';
 
 type Props = {
   role: AiRole,
@@ -56,25 +57,23 @@ const ChatInput = ({ role, appendToChat }: Props) => {
   }, [isLoading, focus]);
 
   return (
-    <>
+    <div className="my-2 input-style">
       <input
         autoFocus={true}
         ref={inputRef}
         disabled={isLoading}
-        className='col-sm-12 col-lg-10'
         value={prompt}
         onChange={e => setPrompt(e.target.value)}
         placeholder={t('placeholder_chat')!}
         onKeyUp={e => handleKeyEvent(e.key, prompt, role)}
       />
-      <Button
+      <button
         disabled={isLoading}
-        className='col'
-        variant="dark"
+        className='d-flex justify-content-center align-items-center no-style'
         onClick={() => onSubmit(prompt, role)}>
-        {t('submit')}
-      </Button>
-    </>
+        <IoSendSharp className="icon" size="1.2rem" color={isLoading ? 'grey' : 'black'} />
+      </button>
+    </div>
   )
 }
 

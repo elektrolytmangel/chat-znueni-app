@@ -1,10 +1,29 @@
 .safe-area {
   height: calc(100vh - env(safe-area-inset-bottom, 0));
   padding-bottom: env(safe-area-inset-bottom, 0);
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.input-style {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  padding: 3px;
+}
+
+.input-style:focus-within {
+  outline: none;
+  transition: .1s;
+  box-shadow: 0 0 1pt 1pt grey;
+}
+
+input {
+  flex-grow: 2;
+  border: none;
 }
 
 input:focus {
   outline: none;
-  transition: .1s;
-  box-shadow: 0 0 1pt 1pt grey;
 }
