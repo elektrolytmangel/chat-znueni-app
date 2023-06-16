@@ -1,5 +1,10 @@
 .safe-area-bottom {
-  margin-bottom: env(safe-area-inset-bottom, 0);
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 2px;
+  padding-bottom: env(safe-area-inset-bottom, '100px');
+  margin-bottom: 2px;
+  background-color: violet;
 }
 
 input:focus {
