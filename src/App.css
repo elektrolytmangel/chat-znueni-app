@@ -27,7 +27,7 @@ input:focus {
   outline: none;
 }
 
-@media only screen and (max-width: 50rem) {
+@media only screen and (max-width: 768px) {
   .safe-area {
     height: 100vh;
     display: flex;
