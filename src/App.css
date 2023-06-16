@@ -1,15 +1,6 @@
-.safe-area-bottom {
-  padding-left: 2px;
-  padding-right: 2px;
-  padding-top: 2px;
-  padding-bottom: env(safe-area-inset-bottom, '100px');
-  margin-bottom: 2px;
-  background-color: violet;
-}
-
 .safe-area {
   height: calc(100vh - env(safe-area-inset-bottom, 0));
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  padding-bottom: env(safe-area-inset-bottom, 0);
 }
 
 input:focus {
