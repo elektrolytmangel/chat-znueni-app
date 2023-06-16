@@ -11,6 +11,7 @@ This repos contains the code to build and run a small chat app answering questio
 ## Prerequisites
 * Node.js
 * VS Code
+* OpenAI API Key (paid account needed, see: [https://platform.openai.com/](https://platform.openai.com/))
 
 ## Start App
 * add an `.env`-file in the `root`-folder containing following content:
