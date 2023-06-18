@@ -20,7 +20,7 @@ const App = () => {
 
   return (
     <div className="safe-area container-fluid" >
-      <div className="p-2 d-flex gap-2 position-absolute top-0 end-0">
+      <div className="py-2 d-flex gap-2 settings-bar">
         <RoleSelector setRole={setRole} />
         <ApiKeyInput />
         <GithubLink />
@@ -29,7 +29,9 @@ const App = () => {
       <div className='overflow-y-auto overflow-x-hidden d-flex flex-column-reverse'>
         <ChatMessages chatHistory={chat} />
       </div>
-      <ChatInput role={role} appendToChat={appendToChat} />
+      <div className='py-2'>
+        <ChatInput role={role} appendToChat={appendToChat} />
+      </div>
     </div >
   );
 }
