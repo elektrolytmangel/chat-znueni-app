@@ -57,7 +57,7 @@ const ChatInput = ({ role, appendToChat }: Props) => {
   }, [isLoading, focus]);
 
   return (
-    <div className="mt-2 mb-3 input-style">
+    <div className="input-style">
       <input
         autoFocus={true}
         ref={inputRef}
