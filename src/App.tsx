@@ -27,7 +27,7 @@ const App = () => {
         <GithubLink />
       </div>
       <h1 hidden={chat.length > 0} className='text-center '>{t('welcome')}</h1>
-      <div className='overflow-y-auto overflow-x-hidden d-flex flex-column-reverse'>
+      <div className='overflow-y-auto overflow-x-hidden d-flex flex-column-reverse custom-scroll'>
         <ChatMessages chatHistory={chat} />
       </div>
       <div className='py-2'>

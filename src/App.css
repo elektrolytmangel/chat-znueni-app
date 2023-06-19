@@ -8,6 +8,11 @@
   padding-bottom: env(safe-area-inset-bottom, 0);
 }
 
+.custom-scroll {
+  scrollbar-color: black transparent;
+  scrollbar-width: thin;
+}
+
 .settings-bar {
   margin-top: 0;
   margin-bottom: auto;
