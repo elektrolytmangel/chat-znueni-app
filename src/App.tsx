@@ -5,6 +5,7 @@ import ApiKeyInput from './components/api-key-input/ApiKeyInput';
 import ChatInput from './components/chat-input/ChatInput';
 import ChatMessages from './components/chat-messages/ChatMessages';
 import GithubLink from './components/github-button/GithubLink';
+import LegalInformation from './components/legal-information/LegalInformation';
 import RoleSelector from './components/role-selector/RoleSelector';
 import './i18n/i18n';
 import { AiRole, ChatHistory, roles } from './model/app';
@@ -19,7 +20,7 @@ const App = () => {
   }
 
   return (
-    <div className="safe-area container-fluid" >
+    <div className="safe-area container" >
       <div className="py-2 d-flex gap-2 settings-bar">
         <RoleSelector setRole={setRole} />
         <ApiKeyInput />
@@ -32,6 +33,7 @@ const App = () => {
       <div className='py-2'>
         <ChatInput role={role} appendToChat={appendToChat} />
       </div>
+      <LegalInformation />
     </div >
   );
 }
