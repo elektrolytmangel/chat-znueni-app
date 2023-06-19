@@ -22,7 +22,7 @@ const ApiKeyInput = () => {
   return (
     <>
       <Button variant='light' onClick={() => setShow(true)}><FaLock className='mb-1' color={lockColor} /></Button>
-      <Modal show={show}>
+      <Modal show={show} className='mt-5'>
         <Modal.Body >
           <div className='d-grid p-2 gap-2'>
             <input className='row input-style' placeholder={t('placeholder_api_key') || ''} onChange={e => setKey(e.target.value)} value={key} />
