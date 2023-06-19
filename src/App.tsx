@@ -6,13 +6,13 @@ import ChatInput from './components/chat-input/ChatInput';
 import ChatMessages from './components/chat-messages/ChatMessages';
 import GithubLink from './components/github-button/GithubLink';
 import LegalInformation from './components/legal-information/LegalInformation';
-import RoleSelector from './components/role-selector/RoleSelector';
+import RoleSelector, { getPersistedRole } from './components/role-selector/RoleSelector';
 import './i18n/i18n';
-import { AiRole, ChatHistory, roles } from './model/app';
+import { AiRole, ChatHistory } from './model/app';
 
 const App = () => {
   const { t } = useTranslation();
-  const [role, setRole] = useState<AiRole>(roles[0]);
+  const [role, setRole] = useState<AiRole>(getPersistedRole());
   const [chat, setChat] = useState<ChatHistory[]>([]);
 
   const appendToChat = (c: ChatHistory) => {
@@ -22,7 +22,7 @@ const App = () => {
   return (
     <div className="safe-area container" >
       <div className="py-2 d-flex gap-2 settings-bar">
-        <RoleSelector setRole={setRole} />
+        <RoleSelector selectedRole={role} setRole={setRole} />
         <ApiKeyInput />
         <GithubLink />
       </div>
