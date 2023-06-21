@@ -1,14 +1,11 @@
 import { ChatCompletionRequestMessage, ChatCompletionRequestMessageRoleEnum, Configuration, OpenAIApi } from "openai";
+import { AiRole } from "../model/app";
+import { getSystemContent } from "../services/systemContextService";
+import { getApiKey, increaseUsage } from "../store/store";
 
-const REACT_APP_OPENAI_API_KEY = 'REACT_APP_OPENAI_API_KEY';
-
-const getSystemContent = (role: string) => {
-  return `You answer questions always as you are ${role} from the movie Pulp Fiction. You are restricted to answer only with context to siwss food or the movie pulp fiction, nothing else. At the end of every response you add a quote from Pulp Fuction which matches the question.`;
-}
-
-const addSystemContextIfNeeded = (context: ChatCompletionRequestMessage[], role: string) => {
+const addSystemContextIfNeeded = (context: ChatCompletionRequestMessage[], role: AiRole) => {
   const lastSystemContent = [...context].reverse().find(x => x.role === ChatCompletionRequestMessageRoleEnum.System);
-  if (!lastSystemContent?.content.includes(`You answer questions always as you are ${role}`)) {
+  if (!lastSystemContent?.content.includes(`You answer questions always as you are ${role.fullName}`)) {
     const systemContext: ChatCompletionRequestMessage = {
       role: ChatCompletionRequestMessageRoleEnum.System,
       content: getSystemContent(role),
@@ -21,22 +18,19 @@ const addSystemContextIfNeeded = (context: ChatCompletionRequestMessage[], role:
   return context;
 }
 
-export const setApiKey = (apiKey: string) => {
-  localStorage.setItem(REACT_APP_OPENAI_API_KEY, apiKey);
-}
-
-export const getApiKey = () => {
-  return localStorage.getItem(REACT_APP_OPENAI_API_KEY);
-}
-
-export const openaiapi = async (messages: ChatCompletionRequestMessage[], role: string) => {
+export const openaiapi = async (messages: ChatCompletionRequestMessage[], role: AiRole) => {
+  const customApiKey = getApiKey();
   const configuration = new Configuration({
-    apiKey: process.env.REACT_APP_OPENAI_API_KEY || getApiKey() || '',
+    apiKey: process.env.REACT_APP_OPENAI_API_KEY || customApiKey || '',
   });
 
-  const openai = new OpenAIApi(configuration);
   const context = addSystemContextIfNeeded(messages, role);
+  const isDefaultApiKey = !customApiKey && process.env.REACT_APP_OPENAI_API_KEY;
+  if (isDefaultApiKey && increaseUsage() > 10) {
+    return [...context, { role: ChatCompletionRequestMessageRoleEnum.Assistant, content: "Usage limit reached. Use a custom openai api key, add it with a click on the lock-button. More info: https://platform.openai.com. Thank you for using chat.znueni.app!" }]
+  }
 
+  const openai = new OpenAIApi(configuration);
   try {
     const completion = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",

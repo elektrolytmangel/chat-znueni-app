@@ -28,7 +28,7 @@ const ChatInput = ({ role, appendToChat }: Props) => {
     addUserMessage(prompt);
     try {
       setIsLoading(true);
-      const response = await requestAi(chatContext, role.fullName);
+      const response = await requestAi(chatContext, role);
       chatContext = response;
       const c = { role: role, content: response[response.length - 1].content } as ChatHistory;
       appendToChat(c);

@@ -1,4 +1,3 @@
-import { useTranslation } from "react-i18next";
 import { FaRegCopy } from "react-icons/fa";
 import { ChatHistory } from "../../model/app";
 
@@ -31,15 +30,16 @@ const convertThrippleBackticksToCode = (content: string) => {
 }
 
 const ChatMessages = ({ chatHistory }: Props) => {
-  const { t } = useTranslation();
   return (
     <>
       {[...chatHistory].reverse().map((r, i) => {
+        const roleText = r.role === 'you' ? null : <><strong>{r.role.fullName}</strong><br /></>;
+        const styles = (r.role === 'you' ? 'text-bg-white' : 'text-bg-secondary') + ' p-3';
         return (
-          <div key={i} className='text-bg-light border my-1 p-2 shadow-sm'>
-            <strong>{r.role === 'you' ? t('you') : r.role.displayName}: </strong>
+          <div key={i} className={styles}>
+            {roleText}
             {convertThrippleBackticksToCode(r.content)}
-          </div>
+          </div >
         )
       })}
     </>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './App.css';
 import ApiKeyInput from './components/api-key-input/ApiKeyInput';
@@ -6,9 +6,10 @@ import ChatInput from './components/chat-input/ChatInput';
 import ChatMessages from './components/chat-messages/ChatMessages';
 import GithubLink from './components/github-button/GithubLink';
 import LegalInformation from './components/legal-information/LegalInformation';
-import RoleSelector, { getPersistedRole } from './components/role-selector/RoleSelector';
+import RoleSelector from './components/role-selector/RoleSelector';
 import './i18n/i18n';
 import { AiRole, ChatHistory } from './model/app';
+import { getPersistedRole, resetUsage } from './store/store';
 
 const App = () => {
   const { t } = useTranslation();
@@ -19,9 +20,15 @@ const App = () => {
     setChat(s => [...s, c]);
   }
 
+  useEffect(() => {
+    const interval = setInterval(() => resetUsage()
+      , 60 * 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="safe-area container" >
-      <div className="py-2 d-flex gap-2 settings-bar">
+    <div className="safe-area" >
+      <div className="p-2 d-flex gap-2 settings-bar">
         <RoleSelector selectedRole={role} setRole={setRole} />
         <ApiKeyInput />
         <GithubLink />
@@ -30,7 +37,7 @@ const App = () => {
       <div className='overflow-y-auto overflow-x-hidden d-flex flex-column-reverse custom-scroll'>
         <ChatMessages chatHistory={chat} />
       </div>
-      <div className='py-2'>
+      <div className='p-2'>
         <ChatInput role={role} appendToChat={appendToChat} />
       </div>
       <LegalInformation />

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Button, Modal } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { FaLock } from 'react-icons/fa';
-import { getApiKey, setApiKey } from "../../api/openaiapi";
+import { getApiKey, setApiKey } from '../../store/store';
 
 const ApiKeyInput = () => {
   const { t } = useTranslation();

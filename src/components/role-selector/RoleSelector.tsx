@@ -1,21 +1,10 @@
-import { AiRole, roles } from '../../model/app';
+import { AiRole } from '../../model/app';
+import { roles } from '../../model/defaults';
+import { setPersistedRole } from '../../store/store';
 
 type Props = {
   selectedRole: AiRole,
   setRole: (s: AiRole) => void,
-}
-
-export const setPersistedRole = (r: AiRole) => {
-  localStorage.setItem('role', JSON.stringify(r));
-}
-
-export const getPersistedRole = (): AiRole => {
-  const r = localStorage.getItem('role');
-  if (r) {
-    return JSON.parse(r);
-  }
-
-  return roles[0];
 }
 
 const RoleSelector = ({ selectedRole, setRole }: Props) => {
