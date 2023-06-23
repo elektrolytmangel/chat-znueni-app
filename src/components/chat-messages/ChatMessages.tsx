@@ -33,7 +33,7 @@ const ChatMessages = ({ chatHistory }: Props) => {
   return (
     <>
       {[...chatHistory].reverse().map((r, i) => {
-        const roleText = r.role === 'you' ? null : <><strong>{r.role.fullName}</strong><br /></>;
+        const roleText = r.role === 'you' ? null : <><strong>{r.role.displayName}</strong><br /></>;
         const styles = (r.role === 'you' ? 'text-bg-white' : 'text-bg-secondary') + ' p-3';
         return (
           <div key={i} className={styles}>
