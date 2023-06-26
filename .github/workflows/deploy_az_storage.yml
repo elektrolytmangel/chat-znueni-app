@@ -3,7 +3,7 @@ name: Chat.Znueni.App Static Web Apps CI/CD
 on:
   push:
     branches:
-      - master
+      - main
     paths:
         - 'src/**'
   workflow_dispatch:
