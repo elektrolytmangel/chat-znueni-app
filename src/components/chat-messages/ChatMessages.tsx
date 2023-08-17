@@ -1,5 +1,9 @@
 import { FaRegCopy } from "react-icons/fa";
 import { ChatHistory } from "../../model/app";
+import ReactMarkdown from 'react-markdown';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { dracula, hybrid, stackoverflowDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   chatHistory: ChatHistory[],
@@ -13,23 +17,9 @@ const copyToClipboard = (textToCopy: string) => {
   });
 }
 
-const convertThrippleBackticksToCode = (content: string) => {
-  return content.split('```').map((c, i, a) => {
-    if (i % 2 !== 0) {
-      return (
-        <pre key={i} className="m-3 p-2 bg-dark text-light ">
-          <button className="bg-transparent border" onClick={() => copyToClipboard(c)}><FaRegCopy className='mb-1' color="white" /></button> <var>[source-code]</var> <span></span>
-          <code>{c}</code>
-        </pre>
-      )
-    }
-    else {
-      return <span key={i}>{c}</span>
-    }
-  });
-}
-
 const ChatMessages = ({ chatHistory }: Props) => {
+  const { t } = useTranslation();
+
   return (
     <>
       {[...chatHistory].reverse().map((r, i) => {
@@ -38,7 +28,31 @@ const ChatMessages = ({ chatHistory }: Props) => {
         return (
           <div key={i} className={styles}>
             {roleText}
-            {convertThrippleBackticksToCode(r.content)}
+            <ReactMarkdown
+              children={r.content}
+              components={{
+                code({ node, inline, className, children, ...props }) {
+                  const match = /language-(\w+)/.exec(className || '')
+                  const content = String(children).replace(/\n$/, '');
+                  return !inline && match ? (
+                    <div style={stackoverflowDark}>
+                      <button className="bg-transparent border" onClick={() => copyToClipboard(content)}><FaRegCopy className='mb-1' color="white" /></button> <span >{t('copy_source_code')}</span>
+                      <SyntaxHighlighter
+                        {...props}
+                        children={content}
+                        style={stackoverflowDark}
+                        language={match[1]}
+                        PreTag="div"
+                      />
+                    </div>
+                  ) : (
+                    <code {...props} className={className}>
+                      {children}
+                    </code>
+                  )
+                }
+              }}
+            />
           </div >
         )
       })}

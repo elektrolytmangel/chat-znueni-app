@@ -26,6 +26,7 @@ i18n
           placeholder_chat: 'Ask something about the znueni!',
           submit: 'Chat',
           welcome: 'Welcome to the chat.znueni.app! Happy to help you out.',
+          copy_source_code: 'copy source code',
         }
       },
       de: {
