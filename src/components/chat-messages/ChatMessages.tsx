@@ -25,7 +25,6 @@ const ChatMessages = ({ chatHistory }: Props) => {
       {[...chatHistory].reverse().map((r, i) => {
         const roleText = r.role === 'you' ? null : <><strong>{r.role.displayName}</strong><br /></>;
         const styles = (r.role === 'you' ? 'text-bg-white' : 'text-bg-dark') + ' p-3';
-        console.log(stackoverflowDark)
         return (
           <div key={i} className={styles}>
             {roleText}
