@@ -7,6 +7,9 @@ This repos contains the code to build and run a small chat app answering questio
 3. Add your own OpenAI API key and press ok (will be stored in the localstorage of the browser)
 4. Start chatting!
 
+![example response](/images/example_01.png)
+Example of a chat response.
+
 # Getting started!
 ## Prerequisites
 * Node.js
