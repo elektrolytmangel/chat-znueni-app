@@ -3,6 +3,7 @@ type AiRole = {
   displayName: string,
   origin: string,
   index: number,
+  context: 'movie' | 'code' | 'life',
 }
 
 type ChatHistory = {
