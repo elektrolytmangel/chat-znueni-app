@@ -48,17 +48,9 @@ const ChatMessages = ({ chatHistory }: Props) => {
                       />
                     </div>
                   ) : (
-                    <div style={{ backgroundColor: stackoverflowDark.hljs.background?.toString() }} className="border border-secondary rounded" >
-                      <button className="bg-transparent border mt-1 ms-1" onClick={() => copyToClipboard(content)} title={t('copy_source_code') || ''}><FaRegCopy className='mb-1' color="white" /></button>
-                      <SyntaxHighlighter
-                        {...props}
-                        showLineNumbers={true}
-                        children={content}
-                        style={stackoverflowDark}
-                        language={language}
-                        PreTag="div"
-                      />
-                    </div>
+                    <code {...props} className={className}>
+                      {children}
+                    </code>
                   )
                 }
               }}
