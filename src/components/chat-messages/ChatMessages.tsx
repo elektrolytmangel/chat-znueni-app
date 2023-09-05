@@ -34,22 +34,31 @@ const ChatMessages = ({ chatHistory }: Props) => {
                 code({ node, inline, className, children, ...props }) {
                   const match = /language-(\w+)/.exec(className || '')
                   const content = String(children).replace(/\n$/, '');
+                  const language = match ? match[1] : 'text';
                   return !inline && match ? (
                     <div style={{ backgroundColor: stackoverflowDark.hljs.background?.toString() }} className="border border-secondary rounded" >
-                      <button className="bg-transparent border mt-1 ms-1" onClick={() => copyToClipboard(content)}><FaRegCopy className='mb-1' color="white" /></button> <span >{t('copy_source_code')}</span>
+                      <button className="bg-transparent border mt-1 ms-1" onClick={() => copyToClipboard(content)} title={t('copy_source_code') || ''}><FaRegCopy className='mb-1' color="white" /></button> <span >{language}</span>
                       <SyntaxHighlighter
                         {...props}
                         showLineNumbers={true}
                         children={content}
                         style={stackoverflowDark}
-                        language={match[1]}
+                        language={language}
                         PreTag="div"
                       />
                     </div>
                   ) : (
-                    <code {...props} className={className}>
-                      {children}
-                    </code>
+                    <div style={{ backgroundColor: stackoverflowDark.hljs.background?.toString() }} className="border border-secondary rounded" >
+                      <button className="bg-transparent border mt-1 ms-1" onClick={() => copyToClipboard(content)} title={t('copy_source_code') || ''}><FaRegCopy className='mb-1' color="white" /></button>
+                      <SyntaxHighlighter
+                        {...props}
+                        showLineNumbers={true}
+                        children={content}
+                        style={stackoverflowDark}
+                        language={language}
+                        PreTag="div"
+                      />
+                    </div>
                   )
                 }
               }}
