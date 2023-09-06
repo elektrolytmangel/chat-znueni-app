@@ -11,6 +11,7 @@
 .custom-scroll {
   scrollbar-color: black transparent;
   scrollbar-width: thin;
+
 }
 
 .settings-bar {
@@ -37,5 +38,14 @@ input {
 }
 
 input:focus {
+  outline: none;
+}
+
+textarea {
+  flex-grow: 2;
+  border: none;
+}
+
+textarea:focus {
   outline: none;
 }

@@ -20,7 +20,7 @@ const ChatInput = ({ role, appendToChat }: Props) => {
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
   const [prompt, setPrompt] = useState('');
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const onSubmit = async (prompt: string, role: AiRole) => {
     setPrompt('');
@@ -38,8 +38,8 @@ const ChatInput = ({ role, appendToChat }: Props) => {
     }
   }
 
-  const handleKeyEvent = (key: string, prompt: string, role: AiRole) => {
-    if (key === 'Enter') {
+  const handleKeyEvent = (e: React.KeyboardEvent<HTMLTextAreaElement>, prompt: string, role: AiRole) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
       onSubmit(prompt, role);
     }
   }
@@ -56,20 +56,35 @@ const ChatInput = ({ role, appendToChat }: Props) => {
     }
   }, [isLoading, focus]);
 
+  function calculateHeigth(text: string): number {
+    const lines = text.split('\n');
+    return lines.length <= 1 ? 24 : (lines.length - 1) * 24 + 24;
+  }
+
+  const textAreaHeight = calculateHeigth(prompt);
   return (
     <div className="input-style">
-      <input
+      <textarea
+        style={{
+          resize: 'none',
+          maxHeight: '200px',
+          overflowY: textAreaHeight > 200 ? 'auto' : 'hidden',
+          height: textAreaHeight + 'px',
+          lineHeight: '1.5rem',
+        }}
+        className="custom-scroll"
         autoFocus={true}
         ref={inputRef}
         disabled={isLoading}
         value={prompt}
+        rows={1}
         onChange={e => setPrompt(e.target.value)}
         placeholder={t('placeholder_chat')!}
-        onKeyUp={e => handleKeyEvent(e.key, prompt, role)}
+        onKeyUp={e => handleKeyEvent(e, prompt, role)}
       />
       <button
         disabled={isLoading}
-        className='d-flex justify-content-center align-items-center no-style'
+        className='d-flex justify-content-center align-items-end no-style'
         onClick={() => onSubmit(prompt, role)}>
         <IoSendSharp className="icon" size="1.2rem" color={isLoading ? 'grey' : 'black'} />
       </button>
