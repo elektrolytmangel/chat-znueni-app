@@ -27,6 +27,14 @@ i18n
           submit: 'Chat',
           welcome: 'Welcome to the chat.znueni.app! Happy to help you out.',
           copy_source_code: 'copy source code',
+          placeholder_name: 'Full name of the role. i.e. Mia Wallace',
+          placeholder_origin: 'Proper origin of the role. i.e. from the movie Pulp Fiction',
+          placeholder_context: 'Additional context in whiche the role should be primed',
+          name: 'Name',
+          origin: 'Origin',
+          context: 'Additional Context',
+          preview: 'Preview',
+          add: 'Add or Update',
         }
       },
       de: {

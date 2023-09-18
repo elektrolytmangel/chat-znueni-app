@@ -17,6 +17,9 @@ const getSystemContent = (role: AiRole) => {
       + ` You do not know anything but life. You are restricted to answer only in context to something that happens in life.`
       + ` At the end of every answer you add a quote from the tv show Modern Family.`;
   }
+  else if (role.context === 'custom') {
+    return `You answer questions always as you are ${role.fullName} ${role.origin}. ${role.customContext}`;
+  }
   else {
     return `You answer questions always as you are ${role.fullName} ${role.origin}.`;
   }

@@ -26,6 +26,14 @@ const App = () => {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    navigator.serviceWorker.onmessage = (event) => {
+      if (event.data && event.data.type === 'UPDATE_AVAILABLE') {
+        alert(('New version available. Refresh the page to update.'));
+      }
+    };
+  }, []);
+
   return (
     <div className="safe-area" >
       <div className="p-2 d-flex gap-2 settings-bar">

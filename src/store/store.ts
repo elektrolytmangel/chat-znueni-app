@@ -4,6 +4,7 @@ import { roles } from "../model/defaults";
 const REACT_APP_OPENAI_API_USAGE_KEY = "REACT_APP_OPENAI_API_USAGE_KEY";
 const REACT_APP_OPENAI_API_KEY = 'REACT_APP_OPENAI_API_KEY';
 const REACT_APP_ROLE_KEY = 'REACT_APP_ROLE_KEY';
+const REACT_APP_CUSTOM_ROLE_KEY = 'REACT_APP_CUSTOM_ROLE_KEY';
 
 export const increaseUsage = (): number => {
   const usage = getUsage() + 1;
@@ -34,8 +35,31 @@ export const setPersistedRole = (r: AiRole) => {
 export const getPersistedRole = (): AiRole => {
   const r = localStorage.getItem(REACT_APP_ROLE_KEY);
   if (r) {
-    return JSON.parse(r);
+    try {
+      return JSON.parse(r);
+    }
+    catch (e) {
+      console.error(e);
+    }
   }
 
   return roles[0];
+}
+
+export const setPersistedCustomRole = (r: AiRole) => {
+  localStorage.setItem(REACT_APP_CUSTOM_ROLE_KEY, JSON.stringify(r));
+}
+
+export const getPersistedCustomRole = (): AiRole | null => {
+  const r = localStorage.getItem(REACT_APP_CUSTOM_ROLE_KEY);
+  if (r) {
+    try {
+      return JSON.parse(r);
+    }
+    catch (e) {
+      console.error(e);
+    }
+  }
+
+  return null;
 }
