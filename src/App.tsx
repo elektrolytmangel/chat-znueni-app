@@ -36,16 +36,15 @@ const App = () => {
 
   return (
     <div className="safe-area" >
-      <div className="p-2 d-flex gap-2 settings-bar">
+      <div className="p-2 d-flex gap-2 settings-bar side-space">
         <RoleSelector selectedRole={role} setRole={setRole} />
         <ApiKeyInput />
         <GithubLink />
       </div>
-      <h1 hidden={chat.length > 0} className='text-center '>{t('welcome')}</h1>
       <div className='overflow-y-auto overflow-x-hidden d-flex flex-column-reverse custom-scroll'>
         <ChatMessages chatHistory={chat} />
       </div>
-      <div className='p-2'>
+      <div className='p-2 side-space'>
         <ChatInput role={role} appendToChat={appendToChat} />
       </div>
       <LegalInformation />

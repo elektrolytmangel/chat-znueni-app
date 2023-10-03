@@ -58,37 +58,45 @@ const ChatInput = ({ role, appendToChat }: Props) => {
 
   function calculateHeigth(text: string): number {
     const lines = text.split('\n');
-    return lines.length <= 1 ? 24 : (lines.length - 1) * 24 + 24;
+    return lines.length <= 1 ? 28 : (lines.length - 1) * 24 + 28;
   }
 
   const textAreaHeight = calculateHeigth(prompt);
   return (
-    <div className="input-style">
-      <textarea
-        style={{
-          resize: 'none',
-          maxHeight: '200px',
-          overflowY: textAreaHeight > 200 ? 'auto' : 'hidden',
-          height: textAreaHeight + 'px',
-          lineHeight: '1.5rem',
-        }}
-        className="custom-scroll"
-        autoFocus={true}
-        ref={inputRef}
-        disabled={isLoading}
-        value={prompt}
-        rows={1}
-        onChange={e => setPrompt(e.target.value)}
-        placeholder={t('placeholder_chat')!}
-        onKeyUp={e => handleKeyEvent(e, prompt, role)}
-      />
-      <button
-        disabled={isLoading}
-        className='d-flex justify-content-center align-items-end no-style'
-        onClick={() => onSubmit(prompt, role)}>
-        <IoSendSharp className="icon" size="1.2rem" color={isLoading ? 'grey' : 'black'} />
-      </button>
-    </div>
+    <>
+      <div className="d-flex justify-content-start align-items-center" hidden={!isLoading}>
+        <div className="spinner-border spinner-border-sm" role="status" hidden={!isLoading} >
+          <span className="visually-hidden" >Loading...</span>
+        </div>
+        <span hidden={!isLoading} className="ms-1">{role.displayName} {t('is_thinking')}</span>
+      </div>
+      <div className="input-style">
+        <textarea
+          style={{
+            resize: 'none',
+            maxHeight: '200px',
+            overflowY: textAreaHeight > 200 ? 'auto' : 'hidden',
+            height: textAreaHeight + 'px',
+            lineHeight: '1.5rem',
+          }}
+          className="custom-scroll"
+          autoFocus={true}
+          ref={inputRef}
+          disabled={isLoading}
+          value={prompt}
+          rows={1}
+          onChange={e => setPrompt(e.target.value)}
+          placeholder={t('placeholder_chat')!}
+          onKeyUp={e => handleKeyEvent(e, prompt, role)}
+        />
+        <button
+          disabled={isLoading}
+          className='d-flex justify-content-center align-items-center no-style'
+          onClick={() => onSubmit(prompt, role)}>
+          <IoSendSharp className="icon" size="1.2rem" color={isLoading ? 'grey' : 'black'} />
+        </button>
+      </div>
+    </>
   )
 }
 

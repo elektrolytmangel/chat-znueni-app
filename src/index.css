@@ -25,3 +25,11 @@ code {
   height: 4px;
   width: 4px
 }
+
+@media screen and (min-width: 767px) {
+  .side-space {
+    width: 69%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

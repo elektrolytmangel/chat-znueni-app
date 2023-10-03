@@ -25,7 +25,6 @@ i18n
           placeholder_api_key: 'Paste your OpenAI API Key here',
           placeholder_chat: 'Ask something about the znueni!',
           submit: 'Chat',
-          welcome: 'Welcome to the chat.znueni.app! Happy to help you out.',
           copy_source_code: 'copy source code',
           placeholder_name: 'Full name of the role. i.e. Mia Wallace',
           placeholder_origin: 'Proper origin of the role. i.e. from the movie Pulp Fiction',
@@ -35,6 +34,7 @@ i18n
           context: 'Additional Context',
           preview: 'Preview',
           add: 'Add or Update',
+          is_thinking: 'is thinking...',
         }
       },
       de: {

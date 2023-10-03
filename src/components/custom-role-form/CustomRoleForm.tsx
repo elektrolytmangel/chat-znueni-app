@@ -35,7 +35,7 @@ const CustomRoleForm = (props: Props) => {
 
   return (
     <>
-      <Button variant="light" onClick={() => setShow(true)} ><MdPersonAdd className='mb-1' /></Button>
+      <Button variant="outline-dark" onClick={() => setShow(true)} ><MdPersonAdd className='mb-1' /></Button>
       <Modal show={show} className='mt-5'>
         <Modal.Body >
           <form className='d-grid p-2 gap-2' onSubmit={handleSubmit((data) => onHandleSubmit(data))}>

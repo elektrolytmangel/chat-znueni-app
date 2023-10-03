@@ -24,38 +24,40 @@ const ChatMessages = ({ chatHistory }: Props) => {
     <>
       {[...chatHistory].reverse().map((r, i) => {
         const roleText = r.role === 'you' ? null : <><strong>{r.role.displayName}</strong><br /></>;
-        const styles = (r.role === 'you' ? 'text-bg-white' : 'text-bg-dark') + ' py-2 px-3';
+        const styles = (r.role === 'you' ? 'text-bg-white' : 'text-bg-light') + ' py-2 px-3 ';
         return (
-          <div key={i} className={styles}>
-            {roleText}
-            <ReactMarkdown
-              children={r.content}
-              components={{
-                code({ node, inline, className, children, ...props }) {
-                  const match = /language-(\w+)/.exec(className || '')
-                  const content = String(children).replace(/\n$/, '');
-                  const language = match ? match[1] : 'text';
-                  return !inline && match ? (
-                    <div style={{ backgroundColor: stackoverflowDark.hljs.background?.toString() }} className="border border-secondary rounded" >
-                      <button className="bg-transparent border mt-1 ms-1" onClick={() => copyToClipboard(content)} title={t('copy_source_code') || ''}><FaRegCopy className='mb-1' color="white" /></button> <span >{language}</span>
-                      <SyntaxHighlighter
-                        {...props}
-                        showLineNumbers={true}
-                        children={content}
-                        style={stackoverflowDark}
-                        language={language}
-                        PreTag="div"
-                      />
-                    </div>
-                  ) : (
-                    <code {...props} className={className}>
-                      {children}
-                    </code>
-                  )
-                }
-              }}
-            />
-          </div >
+          <div className={styles}>
+            <div key={i} className="side-space">
+              {roleText}
+              <ReactMarkdown
+                children={r.content}
+                components={{
+                  code({ node, inline, className, children, ...props }) {
+                    const match = /language-(\w+)/.exec(className || '')
+                    const content = String(children).replace(/\n$/, '');
+                    const language = match ? match[1] : 'text';
+                    return !inline && match ? (
+                      <div style={{ backgroundColor: stackoverflowDark.hljs.background?.toString() }} className="border border-secondary rounded p-1" >
+                        <button className="bg-transparent border mt-1 ms-1" onClick={() => copyToClipboard(content)} title={t('copy_source_code') || ''}><FaRegCopy className='mb-1' color="white" /></button> <span className="text-white" >{language}</span>
+                        <SyntaxHighlighter
+                          {...props}
+                          showLineNumbers={true}
+                          children={content}
+                          style={stackoverflowDark}
+                          language={language}
+                          PreTag="div"
+                        />
+                      </div>
+                    ) : (
+                      <code {...props} className={className}>
+                        {children}
+                      </code>
+                    )
+                  }
+                }}
+              />
+            </div >
+          </div>
         )
       })}
     </>

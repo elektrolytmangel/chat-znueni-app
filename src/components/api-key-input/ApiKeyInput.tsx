@@ -21,7 +21,7 @@ const ApiKeyInput = () => {
   const lockColor = key === '' ? '' : 'green';
   return (
     <>
-      <Button variant='light' onClick={() => setShow(true)}><FaLock className='mb-1' color={lockColor} /></Button>
+      <Button variant='outline-dark' onClick={() => setShow(true)}><FaLock className='mb-1' color={lockColor} /></Button>
       <Modal show={show} className='mt-5'>
         <Modal.Body >
           <div className='d-grid p-2 gap-2'>
