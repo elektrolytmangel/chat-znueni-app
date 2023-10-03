@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import './App.css';
 import ApiKeyInput from './components/api-key-input/ApiKeyInput';
 import ChatInput from './components/chat-input/ChatInput';
@@ -12,7 +11,6 @@ import { AiRole, ChatHistory } from './model/app';
 import { getPersistedRole, resetUsage } from './store/store';
 
 const App = () => {
-  const { t } = useTranslation();
   const [role, setRole] = useState<AiRole>(getPersistedRole());
   const [chat, setChat] = useState<ChatHistory[]>([]);
 
