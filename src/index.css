@@ -33,3 +33,9 @@ code {
     margin-right: auto;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .mobile-hidden {
+    visibility: hidden;
+  }
+}

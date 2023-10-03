@@ -4,6 +4,7 @@ import ApiKeyInput from './components/api-key-input/ApiKeyInput';
 import ChatInput from './components/chat-input/ChatInput';
 import ChatMessages from './components/chat-messages/ChatMessages';
 import GithubLink from './components/github-button/GithubLink';
+import InfoCards from './components/info-cards/InfoCards';
 import LegalInformation from './components/legal-information/LegalInformation';
 import RoleSelector from './components/role-selector/RoleSelector';
 import './i18n/i18n';
@@ -39,6 +40,7 @@ const App = () => {
         <ApiKeyInput />
         <GithubLink />
       </div>
+      {chat.length > 0 ? null : <InfoCards />}
       <div className='overflow-y-auto overflow-x-hidden d-flex flex-column-reverse custom-scroll'>
         <ChatMessages chatHistory={chat} />
       </div>
