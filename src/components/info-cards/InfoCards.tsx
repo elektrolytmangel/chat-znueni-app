@@ -4,7 +4,7 @@ const InfoCards = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="d-flex gap-2 side-space px-5 mx-auto mb-5 row mobile-hidden">
+    <div className="gap-2 side-space px-5 mx-auto row mobile-hidden">
       <div className="card col"  >
         <div className="card-body">
           <h5 className="card-title">{t('card_role_title')}</h5>
