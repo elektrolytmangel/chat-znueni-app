@@ -33,7 +33,7 @@ export const openaiapi = async (messages: ChatCompletionRequestMessage[], role: 
   const openai = new OpenAIApi(configuration);
   try {
     const completion = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4-1106-preview",
       messages: context,
     });
 
