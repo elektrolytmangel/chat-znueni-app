@@ -11,7 +11,6 @@
 .custom-scroll {
   scrollbar-color: black transparent;
   scrollbar-width: thin;
-
 }
 
 .settings-bar {
@@ -28,7 +27,7 @@
 
 .input-style:focus-within {
   outline: none;
-  transition: .1s;
+  transition: 0.1s;
   box-shadow: 0 0 1pt 1pt grey;
 }
 

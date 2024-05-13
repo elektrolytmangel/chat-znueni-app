@@ -7,9 +7,11 @@ const LegalInformation = () => {
 
   return (
     <div>
-      <p className="text-sm">{t('legal_information')} v{version}</p>
+      <p className="text-sm">
+        {t('legal_information')} v{version}
+      </p>
     </div>
-  )
-}
+  );
+};
 
 export default LegalInformation;

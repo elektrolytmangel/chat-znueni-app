@@ -16,40 +16,39 @@ const App = () => {
   const [chat, setChat] = useState<ChatHistory[]>([]);
 
   const appendToChat = (c: ChatHistory) => {
-    setChat(s => [...s, c]);
-  }
+    setChat((s) => [...s, c]);
+  };
 
   useEffect(() => {
-    const interval = setInterval(() => resetUsage()
-      , 60 * 1000);
+    const interval = setInterval(() => resetUsage(), 60 * 1000);
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
     navigator.serviceWorker.onmessage = (event) => {
       if (event.data && event.data.type === 'UPDATE_AVAILABLE') {
-        alert(('New version available. Refresh the page to update.'));
+        alert('New version available. Refresh the page to update.');
       }
     };
   }, []);
 
   return (
-    <div className="safe-area" >
+    <div className="safe-area">
       <div className="p-2 d-flex gap-2 settings-bar side-space">
         <RoleSelector selectedRole={role} setRole={setRole} />
         <ApiKeyInput />
         <GithubLink />
       </div>
       {chat.length > 0 ? null : <InfoCards />}
-      <div className='overflow-y-auto overflow-x-hidden d-flex flex-column-reverse custom-scroll'>
+      <div className="overflow-y-auto overflow-x-hidden d-flex flex-column-reverse custom-scroll">
         <ChatMessages chatHistory={chat} />
       </div>
-      <div className='p-2 side-space'>
+      <div className="p-2 side-space">
         <ChatInput role={role} appendToChat={appendToChat} />
       </div>
       <LegalInformation />
-    </div >
+    </div>
   );
-}
+};
 
 export default App;
