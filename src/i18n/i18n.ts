@@ -44,6 +44,7 @@ i18n
           card_custom_api_key_title: 'OpenAI API Key',
           card_custom_api_key_description:
             'Add your own OpenAI API Key to use the full power of the application. You can get one for free at https://platform.openai.com/.',
+          copy_code: 'copy code',
         },
       },
       de: {

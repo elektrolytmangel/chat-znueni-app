@@ -33,17 +33,17 @@ const ChatMessages = ({ chatHistory }: Props) => {
               <br />
             </>
           );
-        const styles = r.role === 'you' ? 'shadow-lg bg-black rounded ms-auto me-3' : 'py-2';
+        const styles = r.role === 'you' ? ' rounded bg-black text-end p-2 m-0' : '';
         return (
-          <div className={'text-bg-dark px-3 ' + styles}>
-            <div key={i} className="side-space">
+          <div className={'text-bg-dark px-3 py-2'}>
+            <div key={i} className={'side-space'}>
               {roleText}
               <ReactMarkdown
                 children={r.content}
                 components={{
                   p({ className, children, ...props }) {
                     return (
-                      <p className={className + ' m-0 py-1'} {...props}>
+                      <p className={className + styles} {...props}>
                         {children}
                       </p>
                     );
@@ -55,16 +55,18 @@ const ChatMessages = ({ chatHistory }: Props) => {
                     return !inline && match ? (
                       <div
                         style={{ backgroundColor: stackoverflowDark.hljs.background?.toString() }}
-                        className="border border-secondary rounded p-1"
+                        className="bg-success rounded"
                       >
-                        <button
-                          className="bg-transparent border mt-1 ms-1"
-                          onClick={() => copyToClipboard(content)}
-                          title={t('copy_source_code') || ''}
-                        >
-                          <FaRegCopy className="mb-1" color="white" />
-                        </button>{' '}
-                        <span className="text-white">{language}</span>
+                        <div className="d-flex justify-content-between px-1">
+                          <span className="text-white">{language}</span>
+                          <button
+                            className="bg-transparent no-style"
+                            onClick={() => copyToClipboard(content)}
+                            title={t('copy_source_code') || ''}
+                          >
+                            {t('copy_code')}
+                          </button>
+                        </div>
                         <SyntaxHighlighter
                           {...props}
                           showLineNumbers={true}
