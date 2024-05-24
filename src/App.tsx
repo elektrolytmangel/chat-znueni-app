@@ -33,7 +33,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="safe-area">
+    <div className="safe-area bg-dark" data-bs-theme="dark">
       <div className="p-2 d-flex gap-2 settings-bar side-space">
         <RoleSelector selectedRole={role} setRole={setRole} />
         <ApiKeyInput />

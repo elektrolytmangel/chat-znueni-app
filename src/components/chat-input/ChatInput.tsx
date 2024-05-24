@@ -2,6 +2,7 @@ import { ChatCompletionRequestMessage, ChatCompletionRequestMessageRoleEnum } fr
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IoSendSharp } from 'react-icons/io5';
+import TextareaAutosize from 'react-textarea-autosize';
 import { openaiapi as requestAi } from '../../api/openaiapi';
 import { AiRole, ChatHistory } from '../../model/app';
 import './ChatInput.css';
@@ -55,12 +56,6 @@ const ChatInput = ({ role, appendToChat }: Props) => {
     }
   }, [isLoading, focus]);
 
-  function calculateHeigth(text: string): number {
-    const lines = text.split('\n');
-    return lines.length <= 1 ? 28 : (lines.length - 1) * 24 + 28;
-  }
-
-  const textAreaHeight = calculateHeigth(prompt);
   return (
     <>
       <div className="d-flex justify-content-start align-items-center" hidden={!isLoading}>
@@ -71,16 +66,13 @@ const ChatInput = ({ role, appendToChat }: Props) => {
           {role.displayName} {t('is_thinking')}
         </span>
       </div>
-      <div className="input-style">
-        <textarea
+      <div className="w-100 d-flex shadow-lg p-1 rounded border">
+        <TextareaAutosize
           style={{
             resize: 'none',
-            maxHeight: '200px',
-            overflowY: textAreaHeight > 200 ? 'auto' : 'hidden',
-            height: textAreaHeight + 'px',
             lineHeight: '1.5rem',
           }}
-          className="custom-scroll"
+          className="bg-dark "
           autoFocus={true}
           ref={inputRef}
           disabled={isLoading}
@@ -95,7 +87,7 @@ const ChatInput = ({ role, appendToChat }: Props) => {
           className="d-flex justify-content-center align-items-center no-style"
           onClick={() => onSubmit(prompt, role)}
         >
-          <IoSendSharp className="icon" size="1.2rem" color={isLoading ? 'grey' : 'black'} />
+          <IoSendSharp className="icon" size="1.8rem" color={isLoading ? 'grey' : 'white'} />
         </button>
       </div>
     </>

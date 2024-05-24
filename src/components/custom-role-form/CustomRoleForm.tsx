@@ -41,7 +41,7 @@ const CustomRoleForm = (props: Props) => {
 
   return (
     <>
-      <Button variant="outline-dark" onClick={() => setShow(true)}>
+      <Button variant="outline-light" onClick={() => setShow(true)}>
         <MdPersonAdd className="mb-1" />
       </Button>
       <Modal show={show} className="mt-5">

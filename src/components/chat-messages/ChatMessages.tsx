@@ -33,14 +33,21 @@ const ChatMessages = ({ chatHistory }: Props) => {
               <br />
             </>
           );
-        const styles = (r.role === 'you' ? 'text-bg-white' : 'text-bg-light') + ' py-2 px-3 ';
+        const styles = r.role === 'you' ? 'shadow-lg bg-black rounded ms-auto me-3' : 'py-2';
         return (
-          <div className={styles}>
+          <div className={'text-bg-dark px-3 ' + styles}>
             <div key={i} className="side-space">
               {roleText}
               <ReactMarkdown
                 children={r.content}
                 components={{
+                  p({ className, children, ...props }) {
+                    return (
+                      <p className={className + ' m-0 py-1'} {...props}>
+                        {children}
+                      </p>
+                    );
+                  },
                   code({ node, inline, className, children, ...props }) {
                     const match = /language-(\w+)/.exec(className || '');
                     const content = String(children).replace(/\n$/, '');

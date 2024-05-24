@@ -23,7 +23,7 @@ i18n
           legal_information: 'chat.znueni.app may produce inaccurate information about people, places, or facts.',
           ok: 'Ok',
           placeholder_api_key: 'Paste your OpenAI API Key here',
-          placeholder_chat: 'Ask something about the znueni!',
+          placeholder_chat: 'Send message',
           submit: 'Chat',
           copy_source_code: 'copy source code',
           placeholder_name: 'Full name of the role. i.e. Mia Wallace',
