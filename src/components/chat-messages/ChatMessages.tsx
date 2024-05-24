@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { FaRegCopy } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { stackoverflowDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
